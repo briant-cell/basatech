@@ -1,455 +1,1448 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta name="google-adsense-account" content="ca-pub-9181731384543477">
- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9181731384543477"
-     crossorigin="anonymous"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Basatech Zimbabwe | Web Apps & Insurance Specialists</title>
-
-<!-- Tailwind + Fonts -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brian Tinashe Baki | Mechanical Engineering Student</title>
+<meta name="description" content="Brian Tinashe Baki — first-year mechanical engineering student, problem solver and future African entrepreneur. Projects in food-waste prediction, predictive HVAC, water-sludge valorisation and more." />
 
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root{
+  --navy:      #062a52;
+  --blue:      #0b4f9e;
+  --blue-mid:  #1565c0;
+  --blue-lite: #3b8ee0;
+  --tint:      #eaf2fc;
+  --tint-2:    #f6faff;
+  --ink:       #0f2740;
+  --muted:     #5b738f;
+  --line:      #d9e6f6;
+  --white:     #ffffff;
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #0A0A0A;
-    color: #F5F5F5;
-    scroll-behavior: smooth;
-  }
+  --radius:    16px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 2px 8px rgba(11,79,158,.07);
+  --shadow:    0 10px 30px rgba(11,79,158,.10);
+  --shadow-lg: 0 22px 55px rgba(6,42,82,.16);
+  --max:       1160px;
 
-  /* Zimbabwe-inspired pattern overlay */
-  .zim-pattern {
-    background-image: repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 8px);
-  }
+  --font-sf: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+             'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 
-  .glass-modern {
-    background: rgba(20, 20, 30, 0.65);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 2rem;
-  }
+/* ============================================================
+   2. BASE
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family: var(--font-sf);
+  color:var(--ink);
+  background:var(--white);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+svg{display:block;}
 
-  .glass-card {
-    background: linear-gradient(135deg, rgba(255,255,240,0.04) 0%, rgba(0,0,0,0.4) 100%);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: transform 0.25s ease, box-shadow 0.3s ease;
-  }
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:24px;}
+section{scroll-margin-top:88px;}
 
-  .glass-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 35px -12px rgba(0,0,0,0.5);
-    border-color: rgba(239, 68, 68, 0.3);
-  }
+/* ============================================================
+   3. TYPOGRAPHY HELPERS
+   ============================================================ */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue-mid);background:var(--tint);
+  padding:7px 14px;border-radius:999px;margin-bottom:18px;
+}
+.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--blue-mid);}
+.section-head{max-width:680px;margin-bottom:48px;}
+.section-head h2{
+  font-size:clamp(1.75rem,3.6vw,2.5rem);
+  line-height:1.2;letter-spacing:-.02em;color:var(--navy);margin-bottom:14px;
+}
+.section-head p{color:var(--muted);font-size:1.03rem;}
+.pad{padding:96px 0;}
+.pad-sm{padding:72px 0;}
+.tint-bg{background:var(--tint-2);}
 
-  .gradient-text {
-    background: linear-gradient(135deg, #FFFFFF 30%, #E11D48 70%, #F97316 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
+/* ============================================================
+   4. HEADER / NAV
+   ============================================================ */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em;}
+.logo-mark{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(135deg,var(--blue),var(--blue-lite));
+  color:#fff;display:grid;place-items:center;
+  font-size:.82rem;font-weight:800;letter-spacing:.02em;
+  box-shadow:0 6px 16px rgba(11,79,158,.32);
+}
+.logo-txt{font-size:1rem;color:var(--navy);line-height:1.1;}
+.logo-txt small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);}
 
-  /* Zimbabwe flag colors accent */
-  .zim-accent {
-    background: linear-gradient(90deg, #006400, #FFD700, #FF0000, #000000, #FFFFFF);
-  }
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{
+  font-size:.9rem;font-weight:600;color:var(--muted);
+  position:relative;padding:6px 0;transition:color .22s;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--blue-mid);border-radius:2px;transition:width .28s ease;
+}
+.nav-links a:hover{color:var(--blue);}
+.nav-links a:hover::after{width:100%;}
 
-  .btn-primary {
-    background: linear-gradient(95deg, #E11D48 0%, #B91C1C 100%);
-    transition: all 0.2s ease;
-    box-shadow: 0 8px 20px -6px rgba(225, 29, 72, 0.4);
-  }
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-size:.92rem;font-weight:700;border-radius:999px;
+  padding:13px 26px;border:2px solid transparent;cursor:pointer;
+  transition:transform .2s ease, box-shadow .22s ease, background .22s, color .22s, border-color .22s;
+  white-space:nowrap;
+  font-family:inherit;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),var(--blue-mid));
+  color:#fff;box-shadow:0 10px 24px rgba(11,79,158,.30);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(11,79,158,.38);}
+.btn-ghost{
+  background:transparent;color:var(--blue);border-color:var(--line);
+}
+.btn-ghost:hover{border-color:var(--blue-lite);background:var(--tint);transform:translateY(-2px);}
+.btn-on-dark{
+  background:rgba(255,255,255,.10);color:#fff;border-color:rgba(255,255,255,.42);
+}
+.btn-on-dark:hover{background:rgba(255,255,255,.20);transform:translateY(-2px);}
+.btn-white{background:#fff;color:var(--blue);box-shadow:0 10px 24px rgba(0,0,0,.18);}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.24);}
 
-  .btn-primary:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 28px -8px rgba(225, 29, 72, 0.6);
-  }
+.nav-cta{display:none;}
+@media(min-width:1000px){.nav-cta{display:inline-flex;}}
 
-  .btn-outline-light {
-    border: 1.5px solid rgba(255,255,255,0.3);
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(4px);
-  }
+.burger{
+  display:grid;place-items:center;width:44px;height:44px;
+  border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;
+}
+.burger span{display:block;width:20px;height:2px;background:var(--navy);border-radius:2px;position:relative;transition:.25s;}
+.burger span::before,.burger span::after{
+  content:'';position:absolute;left:0;width:20px;height:2px;background:var(--navy);border-radius:2px;transition:.25s;
+}
+.burger span::before{top:-6px;}
+.burger span::after{top:6px;}
+.burger.open span{background:transparent;}
+.burger.open span::before{top:0;transform:rotate(45deg);}
+.burger.open span::after{top:0;transform:rotate(-45deg);}
+@media(min-width:1000px){.burger{display:none;}}
 
-  .btn-outline-light:hover {
-    background: white;
-    color: black;
-    border-color: white;
-  }
+.mobile-menu{
+  display:none;flex-direction:column;gap:4px;
+  padding:10px 24px 24px;border-top:1px solid var(--line);background:#fff;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  padding:13px 6px;font-weight:600;color:var(--ink);
+  border-bottom:1px solid var(--tint);font-size:.95rem;
+}
+.mobile-menu .btn{margin-top:14px;}
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(42px);
-    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  }
+/* ============================================================
+   5. HERO
+   ============================================================ */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 460px at 88% 8%, rgba(59,142,224,.42), transparent 62%),
+    radial-gradient(700px 420px at 6% 92%, rgba(21,101,192,.42), transparent 60%),
+    linear-gradient(155deg, var(--navy) 0%, var(--blue) 58%, #10579f 100%);
+  color:#fff;
+  padding:88px 0 96px;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(circle at 50% 40%, #000 20%, transparent 78%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%, #000 20%, transparent 78%);
+}
+.hero-grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr;gap:56px;align-items:center;
+}
+@media(min-width:940px){
+  .hero-grid{grid-template-columns:1.15fr .85fr;gap:64px;}
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.26);
+  padding:8px 16px;border-radius:999px;
+  font-size:.78rem;font-weight:600;letter-spacing:.04em;margin-bottom:24px;
+}
+.dot-live{
+  width:8px;height:8px;border-radius:50%;background:#5ee0a0;
+  box-shadow:0 0 0 0 rgba(94,224,160,.7);animation:pulse 2.2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(94,224,160,.65);}
+  70%{box-shadow:0 0 0 10px rgba(94,224,160,0);}
+  100%{box-shadow:0 0 0 0 rgba(94,224,160,0);}
+}
+.hero h1{
+  font-size:clamp(2.2rem,5.4vw,3.6rem);
+  line-height:1.07;letter-spacing:-.03em;font-weight:800;margin-bottom:22px;
+}
+.hero h1 .accent{
+  background:linear-gradient(100deg,#8fd0ff,#ffffff 60%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-lead{
+  font-size:clamp(1rem,1.6vw,1.12rem);
+  color:rgba(255,255,255,.86);max-width:580px;margin-bottom:34px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:44px;}
 
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero-stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:520px;
+}
+@media(min-width:620px){.hero-stats{grid-template-columns:repeat(4,1fr);}}
+.stat{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:var(--radius-sm);padding:14px 12px;text-align:center;
+  backdrop-filter:blur(4px);
+}
+.stat b{display:block;font-size:1.32rem;font-weight:800;letter-spacing:-.02em;line-height:1.15;}
+.stat span{font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.72);font-weight:600;}
 
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #111;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #E11D48;
-    border-radius: 10px;
-  }
+/* Portrait */
+.portrait-wrap{position:relative;justify-self:center;width:100%;max-width:380px;}
+.portrait{
+  position:relative;border-radius:26px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.30);
+  box-shadow:0 30px 70px rgba(0,0,0,.36);
+  aspect-ratio:1/1;background:#123a6b;
+}
+.portrait img{width:100%;height:100%;object-fit:cover;}
+.portrait-ring{
+  position:absolute;inset:-16px;border:1px dashed rgba(255,255,255,.28);
+  border-radius:34px;pointer-events:none;
+}
+.float-card{
+  position:absolute;background:#fff;color:var(--navy);
+  border-radius:14px;padding:12px 16px;box-shadow:var(--shadow-lg);
+  font-size:.78rem;font-weight:700;line-height:1.3;
+  display:flex;align-items:center;gap:10px;
+}
+.float-card small{display:block;font-weight:600;color:var(--muted);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;}
+.fc-1{bottom:-22px;left:-18px;}
+.fc-2{top:-20px;right:-14px;}
+.fc-icon{
+  width:32px;height:32px;border-radius:9px;display:grid;place-items:center;
+  background:var(--tint);color:var(--blue);flex:0 0 auto;
+}
+.fc-icon svg{width:17px;height:17px;}
+@media(max-width:520px){
+  .fc-1{left:-6px;bottom:-16px;padding:10px 12px;font-size:.72rem;}
+  .fc-2{right:-6px;top:-16px;padding:10px 12px;font-size:.72rem;}
+}
 
-  .contact-card {
-    background: rgba(15, 15, 20, 0.8);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.2s;
-  }
-  .contact-card:hover {
-    border-color: #25D366;
-    background: rgba(37, 211, 102, 0.08);
-  }
+/* ============================================================
+   6. MARQUEE STRIP
+   ============================================================ */
+.strip{
+  background:var(--navy);color:#fff;padding:16px 0;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.strip-track{
+  display:flex;gap:44px;white-space:nowrap;width:max-content;
+  animation:scrollX 34s linear infinite;
+}
+.strip-track span{
+  font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);display:flex;align-items:center;gap:44px;
+}
+.strip-track span::after{
+  content:'';
+  display:inline-block;
+  width:6px;height:6px;
+  background:rgba(59,142,224,.9);
+  transform:rotate(45deg);
+  flex:0 0 auto;
+}
+@keyframes scrollX{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-  .feature-icon {
-    background: rgba(225, 29, 72, 0.15);
-    backdrop-filter: blur(4px);
-  }
+/* ============================================================
+   7. ABOUT
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:1fr;gap:52px;align-items:start;}
+@media(min-width:920px){.about-grid{grid-template-columns:1.1fr .9fr;gap:64px;}}
+.about-copy p{color:var(--muted);margin-bottom:18px;font-size:1.02rem;}
+.about-copy p strong{color:var(--ink);font-weight:700;}
 
-  /* Zimbabwe bird silhouette element */
-  .zim-bird-bg {
-    position: relative;
-  }
-  .zim-bird-bg::before {
-    content: "🦅";
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 80px;
-    opacity: 0.03;
-    pointer-events: none;
-    font-family: monospace;
-  }
+.pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--tint);color:var(--blue);
+  border:1px solid #cfe2f7;border-radius:999px;
+  padding:8px 15px;font-size:.82rem;font-weight:700;
+}
+.pill svg{width:15px;height:15px;flex:0 0 auto;}
+
+.fact-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px;box-shadow:var(--shadow-sm);
+}
+.fact-card h3{font-size:1.02rem;color:var(--navy);margin-bottom:20px;letter-spacing:-.01em;}
+.fact{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line);}
+.fact:last-child{border-bottom:0;padding-bottom:0;}
+.fact:first-of-type{padding-top:0;}
+.fact-ico{
+  width:38px;height:38px;flex:0 0 auto;border-radius:11px;
+  background:var(--tint);color:var(--blue-mid);
+  display:grid;place-items:center;
+}
+.fact-ico svg{width:18px;height:18px;}
+.fact b{display:block;font-size:.9rem;color:var(--ink);}
+.fact span{font-size:.83rem;color:var(--muted);}
+
+/* ============================================================
+   8. SKILLS
+   ============================================================ */
+.skill-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+@media(min-width:860px){.skill-grid{grid-template-columns:repeat(3,1fr);}}
+
+.skill-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 26px;box-shadow:var(--shadow-sm);
+  position:relative;overflow:hidden;
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s;
+}
+.skill-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--blue),var(--blue-lite));
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+}
+.skill-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c8ddf5;}
+.skill-card:hover::before{transform:scaleX(1);}
+.skill-card h3{
+  font-size:1.02rem;color:var(--navy);margin-bottom:6px;letter-spacing:-.01em;
+  display:flex;align-items:center;gap:10px;
+}
+.skill-card .sc-ico{
+  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  background:var(--tint);color:var(--blue-mid);flex:0 0 auto;
+}
+.skill-card .sc-ico svg{width:17px;height:17px;}
+.skill-card .sc-sub{font-size:.82rem;color:var(--muted);margin-bottom:18px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{
+  font-size:.79rem;font-weight:600;padding:6px 12px;border-radius:8px;
+  background:var(--tint-2);color:var(--blue);border:1px solid #dfeaf9;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.chip:hover{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);}
+.chip.learning{background:#fff7e8;color:#a05a00;border-color:#ffe3b3;}
+.chip.learning:hover{background:#a05a00;color:#fff;border-color:#a05a00;}
+
+/* ============================================================
+   9. PROJECTS
+   ============================================================ */
+.project-grid{display:grid;grid-template-columns:1fr;gap:28px;}
+@media(min-width:800px){.project-grid{grid-template-columns:repeat(2,1fr);}}
+
+.project{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s;
+}
+.project:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#c8ddf5;}
+
+.project-media{
+  position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint);
+}
+.project-media img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.2,.7,.3,1);
+}
+.project:hover .project-media img{transform:scale(1.055);}
+.project-tag{
+  position:absolute;top:14px;left:14px;
+  background:rgba(6,42,82,.86);color:#fff;
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px);
+}
+.project-body{padding:26px;display:flex;flex-direction:column;flex:1;}
+.project-body h3{font-size:1.16rem;color:var(--navy);margin-bottom:10px;letter-spacing:-.015em;line-height:1.3;}
+.project-body p{font-size:.93rem;color:var(--muted);margin-bottom:18px;flex:1;}
+.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+.project-tags span{
+  font-size:.72rem;font-weight:700;letter-spacing:.03em;
+  color:var(--blue);background:var(--tint);padding:5px 10px;border-radius:6px;
+}
+.project-link{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.85rem;font-weight:700;color:var(--blue-mid);
+  transition:gap .22s ease,color .2s;
+}
+.project-link svg{width:15px;height:15px;transition:transform .22s ease;}
+.project-link:hover{gap:12px;color:var(--navy);}
+.project-link:hover svg{transform:translateX(3px);}
+
+.more-note{
+  margin-top:36px;text-align:center;color:var(--muted);font-size:.93rem;
+  background:var(--tint);border:1px dashed #c4dcf5;border-radius:var(--radius);
+  padding:20px;
+}
+.more-note strong{color:var(--blue);}
+
+/* ============================================================
+   10. EXPERIENCE / BUSINESS
+   ============================================================ */
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+@media(min-width:860px){.exp-grid{grid-template-columns:repeat(4,1fr);}}
+.exp-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 22px;text-align:center;box-shadow:var(--shadow-sm);
+  transition:transform .28s, box-shadow .28s, border-color .28s;
+}
+.exp-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c8ddf5;}
+.exp-ico{
+  width:56px;height:56px;margin:0 auto 16px;border-radius:16px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--tint),#dbeafb);
+  color:var(--blue);box-shadow:inset 0 0 0 1px #d3e5f8;
+}
+.exp-ico svg{width:24px;height:24px;}
+.exp-card h3{font-size:.98rem;color:var(--navy);margin-bottom:7px;}
+.exp-card p{font-size:.84rem;color:var(--muted);line-height:1.55;}
+
+/* ============================================================
+   11. GLOBAL
+   ============================================================ */
+.global{
+  background:linear-gradient(150deg,var(--navy),var(--blue) 70%,#0f5aa8);
+  color:#fff;position:relative;overflow:hidden;
+}
+.global::before{
+  content:'';position:absolute;width:640px;height:640px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.10);top:-260px;right:-200px;
+}
+.global::after{
+  content:'';position:absolute;width:420px;height:420px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);bottom:-180px;left:-140px;
+}
+.global .wrap{position:relative;z-index:2;}
+.global-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;}
+@media(min-width:900px){.global-grid{grid-template-columns:1fr 1fr;gap:60px;}}
+.global .section-head h2{color:#fff;}
+.global .section-head p{color:rgba(255,255,255,.82);}
+.global .eyebrow{background:rgba(255,255,255,.14);color:#bfe0ff;}
+.global .eyebrow::before{background:#bfe0ff;}
+
+.country-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.country{
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);
+  border-radius:14px;padding:18px 16px;backdrop-filter:blur(6px);
+  transition:background .25s,transform .25s;
+}
+.country:hover{background:rgba(255,255,255,.18);transform:translateY(-4px);}
+.country .flag-svg{margin-bottom:10px;border-radius:3px;overflow:hidden;width:44px;height:30px;box-shadow:0 2px 8px rgba(0,0,0,.18);}
+.country .flag-svg svg{width:100%;height:100%;display:block;}
+.country b{display:block;font-size:.93rem;}
+.country span{font-size:.75rem;color:rgba(255,255,255,.68);letter-spacing:.05em;text-transform:uppercase;font-weight:600;}
+
+.xc-list{margin-top:32px;display:flex;flex-direction:column;gap:14px;}
+.xc-item{display:flex;gap:13px;align-items:flex-start;font-size:.93rem;color:rgba(255,255,255,.85);}
+.xc-item .tick{
+  width:22px;height:22px;flex:0 0 auto;border-radius:50%;
+  background:rgba(255,255,255,.16);display:grid;place-items:center;
+  color:#9fe8c4;margin-top:2px;
+}
+.xc-item .tick svg{width:12px;height:12px;}
+
+/* ============================================================
+   12. VISION
+   ============================================================ */
+.vision-card{
+  background:#fff;border:1px solid var(--line);border-radius:24px;
+  padding:clamp(32px,5vw,64px);box-shadow:var(--shadow);
+  position:relative;overflow:hidden;
+}
+.vision-card::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:6px;
+  background:linear-gradient(90deg,var(--navy),var(--blue-mid),var(--blue-lite));
+}
+.vision-card h2{
+  font-size:clamp(1.6rem,3.4vw,2.35rem);color:var(--navy);
+  letter-spacing:-.025em;line-height:1.2;margin-bottom:20px;max-width:780px;
+}
+.vision-card p{color:var(--muted);font-size:1.03rem;max-width:760px;margin-bottom:16px;}
+.vision-points{
+  display:grid;grid-template-columns:1fr;gap:16px;margin-top:34px;
+}
+@media(min-width:760px){.vision-points{grid-template-columns:repeat(3,1fr);}}
+.vp{
+  background:var(--tint-2);border:1px solid var(--line);border-radius:14px;padding:22px;
+}
+.vp b{display:block;color:var(--blue);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+.vp p{font-size:.9rem;margin:0;color:var(--muted);}
+
+/* ============================================================
+   13. CONTACT
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:40px;}
+@media(min-width:900px){.contact-grid{grid-template-columns:.95fr 1.05fr;gap:56px;}}
+
+.contact-list{display:flex;flex-direction:column;gap:14px;margin-top:30px;}
+.contact-item{
+  display:flex;align-items:center;gap:15px;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:16px 18px;box-shadow:var(--shadow-sm);
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.contact-item:hover{transform:translateX(5px);border-color:#c8ddf5;box-shadow:var(--shadow);}
+.contact-ico{
+  width:42px;height:42px;flex:0 0 auto;border-radius:12px;
+  display:grid;place-items:center;
+  background:var(--tint);color:var(--blue-mid);
+}
+.contact-ico svg{width:19px;height:19px;}
+.contact-item b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;}
+.contact-item span{font-size:.94rem;color:var(--ink);font-weight:600;word-break:break-word;}
+
+.form-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(26px,4vw,38px);box-shadow:var(--shadow);
+}
+.form-card h3{font-size:1.15rem;color:var(--navy);margin-bottom:6px;}
+.form-card .fsub{font-size:.88rem;color:var(--muted);margin-bottom:26px;}
+.field{margin-bottom:18px;}
+.field label{
+  display:block;font-size:.78rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:8px;
+}
+.field input,.field textarea{
+  width:100%;font-family:inherit;font-size:.95rem;color:var(--ink);
+  padding:13px 15px;border:1.5px solid var(--line);border-radius:11px;
+  background:var(--tint-2);transition:border-color .2s, background .2s, box-shadow .2s;
+}
+.field input:focus,.field textarea:focus{
+  outline:none;border-color:var(--blue-lite);background:#fff;
+  box-shadow:0 0 0 4px rgba(59,142,224,.14);
+}
+.field textarea{resize:vertical;min-height:120px;}
+.form-note{font-size:.78rem;color:var(--muted);margin-top:14px;text-align:center;}
+
+/* ============================================================
+   14. FOOTER
+   ============================================================ */
+footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
+.foot-top{
+  display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;
+  padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:26px;
+}
+.foot-brand{max-width:340px;}
+.foot-brand .logo-txt{color:#fff;}
+.foot-brand .logo-txt small{color:rgba(255,255,255,.55);}
+.foot-brand p{font-size:.88rem;margin-top:14px;line-height:1.65;}
+.foot-links{display:flex;gap:56px;flex-wrap:wrap;}
+.foot-col h4{
+  font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;margin-bottom:14px;font-weight:800;
+}
+.foot-col a{display:block;font-size:.88rem;padding:5px 0;transition:color .2s;}
+.foot-col a:hover{color:#8fd0ff;}
+.foot-bottom{
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+  font-size:.8rem;color:rgba(255,255,255,.5);
+}
+
+/* ============================================================
+   15. REVEAL ANIMATION
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+  html{scroll-behavior:auto;}
+  .strip-track{animation:none;}
+}
 </style>
 </head>
-<body class="antialiased zim-pattern">
 
-<!-- NAVIGATION -->
-<nav class="fixed w-full z-50 top-0 left-0 py-4 px-6 transition-all duration-300 bg-black/40 backdrop-blur-xl border-b border-white/10">
-  <div class="max-w-7xl mx-auto flex justify-between items-center">
-    <div class="text-3xl font-black tracking-tight">
-      BASA<span class="text-red-500">.</span><span class="font-light">TECH</span>
-      <span class="hidden md:inline-block text-sm font-normal text-gray-400 ml-2">| Proudly Zimbabwean • Web Apps • Insurance • Crayfish</span>
-    </div>
-    <div class="flex gap-4 items-center">
-      <a href="#services-core" class="hidden md:block text-sm font-medium text-gray-300 hover:text-white transition">Services</a>
-      <a href="#crayfish" class="hidden md:block text-sm font-medium text-gray-300 hover:text-white transition">Crayfish</a>
-      <a href="#quote" class="bg-red-600 hover:bg-red-700 px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide shadow-lg transition-all">Get Quote →</a>
-    </div>
-  </div>
-</nav>
+<body>
 
-<!-- HERO SECTION with Zimbabwe flag colors accent -->
-<section class="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden zim-bird-bg">
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-black to-black"></div>
-  <div class="absolute top-40 left-10 w-72 h-72 bg-red-600/20 rounded-full blur-[100px]"></div>
-  <div class="absolute bottom-20 right-10 w-96 h-96 bg-yellow-600/10 rounded-full blur-[120px]"></div>
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-green-600/5 rounded-full blur-[80px]"></div>
-
-  <div class="max-w-5xl relative z-10 reveal">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-sm text-gray-300 mb-6">
-      <span>🇿🇼</span> <span>Proudly Zimbabwean</span> <span>🦞</span>
-    </div>
-    <h1 class="text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-tight">
-      Web Apps & <span class="gradient-text">Insurance</span><br> Specialists
-    </h1>
-    <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mt-6 leading-relaxed">
-      Custom business systems • ZINARA & ZBC licensing • Australian Crayfish
-    </p>
-    <div class="flex flex-wrap gap-4 justify-center mt-10">
-      <a href="#services-core" class="btn-primary px-8 py-4 rounded-full font-bold text-white text-lg shadow-2xl">Core Services</a>
-      <a href="#crayfish" class="btn-outline-light px-8 py-4 rounded-full font-medium text-white text-lg backdrop-blur-sm">Order Crayfish →</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOCUS SECTION: Web Apps & Insurance (prominent, no pricing) -->
-<section id="services-core" class="py-28 px-6 relative">
-  <div class="max-w-7xl mx-auto text-center">
-    <div class="reveal">
-      <span class="text-red-500 font-semibold tracking-wider text-sm uppercase bg-red-500/10 px-4 py-1 rounded-full">our expertise</span>
-      <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6">Core Focus: <span class="text-red-400">Web Apps & Insurance</span></h2>
-      <p class="text-gray-400 max-w-2xl mx-auto mb-16">Powerful digital solutions and seamless compliance — the backbone of modern business in Zimbabwe.</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-      <!-- Web Apps Expanded (price removed) -->
-      <div class="glass-card rounded-3xl p-8 text-left transition-all reveal group">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="w-14 h-14 rounded-2xl feature-icon flex items-center justify-center text-3xl">💻</div>
-          <h3 class="text-3xl font-bold">Web Apps & Systems</h3>
+<!-- ============================ HEADER ============================ -->
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="#top" class="logo">
+        <div class="logo-mark">BTB</div>
+        <div class="logo-txt">
+          Brian T. Baki
+          <small>Mechanical Engineering</small>
         </div>
-        <p class="text-gray-300 leading-relaxed mb-5">We build custom web applications, mobile-ready platforms, and enterprise systems tailored to Zimbabwean businesses. From inventory management to client portals, we deliver scalable solutions.</p>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li class="flex items-center gap-2">✓ <span>Custom CRM & ERP Systems</span></li>
-          <li class="flex items-center gap-2">✓ <span>E-commerce & Payment Integration</span></li>
-          <li class="flex items-center gap-2">✓ <span>Mobile-Friendly Dashboards & Analytics</span></li>
-          <li class="flex items-center gap-2">✓ <span>Ongoing Support & Maintenance</span></li>
-        </ul>
-        <div class="mt-6 inline-block bg-red-500/20 px-4 py-2 rounded-full text-sm font-semibold text-red-300">📞 Contact for custom quote</div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#vision">Vision</a>
+        <a href="#contact">Contact</a>
       </div>
 
-      <!-- Insurance Expanded (ZINARA + ZBC only) -->
-      <div class="glass-card rounded-3xl p-8 text-left transition-all reveal group">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="w-14 h-14 rounded-2xl feature-icon flex items-center justify-center text-3xl">🛡️</div>
-          <h3 class="text-3xl font-bold">Insurance Services</h3>
-        </div>
-        <p class="text-gray-300 leading-relaxed mb-5">Fast, reliable processing for ZINARA and ZBC licences. We handle the paperwork so you stay compliant without stress.</p>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li class="flex items-center gap-2">✓ <span>ZINARA Vehicle Licensing & Road Permits</span></li>
-          <li class="flex items-center gap-2">✓ <span>ZBC Television & Radio Receiver Licences</span></li>
-          <li class="flex items-center gap-2">✓ <span>Same-day Processing Available</span></li>
-          <li class="flex items-center gap-2">✓ <span>Fleet & Corporate Discounts</span></li>
-        </ul>
-        <div class="mt-6 inline-block bg-blue-500/20 px-4 py-2 rounded-full text-sm font-semibold text-blue-300">Call for a quick quote</div>
-      </div>
-    </div>
-  </div>
-</section>
+      <a href="#contact" class="btn btn-primary nav-cta">Let's talk</a>
 
-<!-- OTHER SERVICES (Printing & Art with actual images, Zimbabwean feel) -->
-<section class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-6xl mx-auto text-center">
-    <div class="reveal">
-      <h3 class="text-2xl font-medium text-gray-400 mb-4">Also Available — Complementary Services</h3>
-      <div class="w-24 h-1 zim-accent mx-auto rounded-full mb-10"></div>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <!-- Printing Card with Image -->
-      <div class="glass-card rounded-2xl overflow-hidden transition-all reveal group">
-        <div class="h-56 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8b4?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Printing services Zimbabwe">
+      <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#global">Global</a>
+    <a href="#vision">Vision</a>
+    <a href="#contact" class="btn btn-primary">Let's talk</a>
+  </div>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div>
+        <div class="hero-badge">
+          <span class="dot-live"></span>
+          Open to internships, projects &amp; collaboration
         </div>
-        <div class="p-6 text-left">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="text-3xl">🖨️</span>
-            <h4 class="text-xl font-bold">Printing & Branding</h4>
+
+        <h1>
+          Engineering solutions<br>
+          for <span class="accent">real African problems.</span>
+        </h1>
+
+        <p class="hero-lead">
+          I'm <strong>Brian Tinashe Baki</strong> — a first-year mechanical engineering student
+          from Zimbabwe with a builder's mindset. I pair strong engineering fundamentals with
+          hands-on business experience across agriculture, printing, insurance and art, and I'm
+          working towards becoming an entrepreneur creating impact across Africa.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-white">
+            View my projects
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-on-dark">Get in touch</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><b>12+</b><span>Core Subjects</span></div>
+          <div class="stat"><b>4</b><span>Countries</span></div>
+          <div class="stat"><b>5</b><span>Industries</span></div>
+          <div class="stat"><b>4+</b><span>Projects</span></div>
+        </div>
+      </div>
+
+      <div class="portrait-wrap">
+        <div class="portrait-ring"></div>
+        <div class="portrait">
+          <!-- 🔁 REPLACE THIS IMAGE with your own portrait (recommended 800x800px) -->
+          <img
+            src="Imageme.jpg"
+            alt="Portrait of Brian Tinashe Baki — replace with your own photo" />
+        </div>
+
+        <div class="float-card fc-1">
+          <div class="fc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           </div>
-          <p class="text-gray-400 text-sm leading-relaxed">High-quality flyers, banners, business cards, and full brand identity packages. Serving businesses across Gweru, Harare, and Bulawayo.</p>
-          <div class="mt-3 text-red-400 text-sm font-semibold">🇿🇼 Nationwide delivery available</div>
-        </div>
-      </div>
-      <!-- Art Studio Card with Image -->
-      <div class="glass-card rounded-2xl overflow-hidden transition-all reveal group">
-        <div class="h-56 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Art studio portraits Zimbabwe">
-        </div>
-        <div class="p-6 text-left">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="text-3xl">🎨</span>
-            <h4 class="text-xl font-bold">Art Studio</h4>
+          <div>
+            Mechanical Engineering Student
+            <small>21 Years Old · Zimbabwean</small>
           </div>
-          <p class="text-gray-400 text-sm leading-relaxed">Custom pencil portraits, vinyl artwork, and mixed-media commissions. Perfect for gifts, memorials, and home decor.</p>
-          <div class="mt-3 text-red-400 text-sm font-semibold">🎁 Order a unique Zimbabwean artwork</div>
+        </div>
+
+        <div class="float-card fc-2">
+          <div class="fc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            Built in Zimbabwe
+            <small>Thinking pan-African</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MARQUEE ============================ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>Fluid Mechanics</span><span>Autodesk Fusion 360</span><span>Thermodynamics</span>
+    <span>Heat &amp; Mass Transfer</span><span>AutoCAD</span><span>Strength of Materials</span>
+    <span>Mechanics of Machines</span><span>Design of Machine Elements</span><span>Hydraulics &amp; Pneumatics</span>
+    <span>C Programming</span><span>Mathcad</span><span>Electrical Machines &amp; Drives</span><span>PLCs</span>
+    <span>Fluid Mechanics</span><span>Autodesk Fusion 360</span><span>Thermodynamics</span>
+    <span>Heat &amp; Mass Transfer</span><span>AutoCAD</span><span>Strength of Materials</span>
+    <span>Mechanics of Machines</span><span>Machine Elements</span><span>Hydraulics &amp; Pneumatics</span>
+    <span>C Programming</span><span>Mathcad</span><span>Electrical Machines &amp; Drives</span><span>PLCs</span>
+  </div>
+</div>
+
+<!-- ============================ ABOUT ============================ -->
+<section class="pad" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="about-copy reveal">
+        <div class="eyebrow">About me</div>
+        <h2 style="font-size:clamp(1.75rem,3.6vw,2.5rem);line-height:1.2;letter-spacing:-.02em;color:var(--navy);margin-bottom:22px;">
+          Engineering and entrepreneurship
+        </h2>
+
+        <p>
+          I'm a <strong>first-year mechanical engineering student</strong>, Zimbabwean by birth,
+          and someone who learns fastest by building. Before I started my engineering degree,
+          I ran businesses across <strong>agriculture, large format printing, insurance and art sales</strong> — which
+          means I don't just see equations, I see the operational reality behind them: the costs,
+          the constraints, the people and the messiness that no textbook captures.
+        </p>
+
+        <p>
+          That background shaped how I approach engineering. My default question isn't
+          "what is the formula?" it's <strong>"what is actually broken here, and what is the
+          simplest thing that fixes it?"</strong> I've applied that to food waste prediction in
+          kitchens, predictive HVAC control in boardrooms, sludge valorisation in water treatment
+          a housing platform for Zimbabwe and an automatic trenchcutting machine.
+        </p>
+
+        <p>
+          I'm currently deepening my <strong>multivariable calculus</strong>, pushing my
+          <strong>C programming</strong> further, and getting hands on with
+          <strong>PLCs and industrial automation</strong> because I want to move fluidly between
+          the design desk and the plant floor.
+        </p>
+
+        <div class="pill-row">
+          <span class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Problem identification
+          </span>
+          <span class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            First principles thinking
+          </span>
+          <span class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Cross cultural communication
+          </span>
+          <span class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            Entrepreneurial drive
+          </span>
+        </div>
+      </div>
+
+      <aside class="fact-card reveal">
+        <h3>Quick facts</h3>
+
+        <div class="fact">
+          <div class="fact-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/><path d="M22 10v6"/></svg>
+          </div>
+          <div>
+            <b>First-year Mechanical Engineering</b>
+            <span>Building on strong self taught fundamentals</span>
+          </div>
+        </div>
+
+        <div class="fact">
+          <div class="fact-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <b>Zimbabwean by birth</b>
+            <span>Based in Zimbabwe · open to remote &amp; regional work</span>
+          </div>
+        </div>
+
+        <div class="fact">
+          <div class="fact-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+          </div>
+          <div>
+            <b>4 African countries visited</b>
+            <span>Zimbabwe · South Africa · Botswana · Ethiopia</span>
+          </div>
+        </div>
+
+        <div class="fact">
+          <div class="fact-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div>
+            <b>Ran businesses before engineering</b>
+            <span>Agriculture ·Large Format Printing · Insurance · Art </span>
+          </div>
+        </div>
+
+        <div class="fact">
+          <div class="fact-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div>
+            <b>Currently studying</b>
+            <span>Multivariable calculus · Advanced C · PLCs ·Finite Element Analysis using ANSYS </span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SKILLS ============================ -->
+<section class="pad tint-bg" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Capabilities</div>
+      <h2>What I can already do</h2>
+      <p>
+        A mix of mechanical engineering fundamentals, design software and the
+        programming and control skills that let me take a concept from sketch to
+        working system.
+      </p>
+    </div>
+
+    <div class="skill-grid">
+
+      <!-- Mechanical fundamentals -->
+      <div class="skill-card reveal">
+        <h3>
+          <span class="sc-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </span>
+          Mechanical Fundamentals
+        </h3>
+        <p class="sc-sub">Subjects I'm fluent in and apply to real designs.</p>
+        <div class="chips">
+          <span class="chip">Fluid Mechanics</span>
+          <span class="chip">Applied Strength of Materials</span>
+          <span class="chip">Mechanics of Machines</span>
+          <span class="chip">Design of Machine Elements</span>
+          <span class="chip">Applied Thermodynamics</span>
+          <span class="chip">Heat &amp; Mass Transfer</span>
+          <span class="chip">Hydraulics &amp; Pneumatics Systems</span>
+        </div>
+      </div>
+
+      <!-- Electrical -->
+      <div class="skill-card reveal">
+        <h3>
+          <span class="sc-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </span>
+          Electrical &amp; Control
+        </h3>
+        <p class="sc-sub">Comfortable across the electrical side of mechanical systems.</p>
+        <div class="chips">
+          <span class="chip">Electrical &amp; Electronics</span>
+          <span class="chip">Electrical Machines &amp; Drives</span>
+          <span class="chip">Feedforward &amp; Feedback Control</span>
+          <span class="chip">Sensor &amp; Occupancy Modelling</span>
+        </div>
+      </div>
+
+      <!-- Software -->
+      <div class="skill-card reveal">
+        <h3>
+          <span class="sc-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </span>
+          Tools &amp; Software
+        </h3>
+        <p class="sc-sub">Design, calculation and code.</p>
+        <div class="chips">
+          <span class="chip">AutoCAD</span>
+          <span class="chip">Autodesk Fusion 360</span>
+          <span class="chip">Mathcad</span>
+          <span class="chip">C Programming</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Currently learning -->
+    <div class="skill-card reveal" style="margin-top:24px;">
+      <h3>
+        <span class="sc-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </span>
+        Currently Levelling Up
+      </h3>
+      <p class="sc-sub">Deliberate practice in progress not finished, but moving fast.</p>
+      <div class="chips">
+        <span class="chip learning">Multivariable Calculus</span>
+        <span class="chip learning">C Programming — advanced</span>
+        <span class="chip learning">PLCs &amp; Industrial Automation</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ PROJECTS ============================ -->
+<section class="pad" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Selected work</div>
+      <h2>Projects I've built</h2>
+      <p>
+        Each of these started with a problem I could see happening in the real world
+        then turned into a system, a model or a prototype.
+      </p>
+    </div>
+
+    <div class="projectgrid">
+
+      <!-- PROJECT 1 -->
+      <article class="project reveal">
+        <div class="project-media">
+          <!-- 🔁 REPLACE with a screenshot/photo of PrePlate -->
+          <img src="Preplate.jpg"
+               alt="PrePlate project image placeholder" />
+          <span class="project-tag">Food Systems</span>
+        </div>
+        <div class="project-body">
+          <h3>PrePlate — Food Waste Prediction &amp; Meal Pre-ordering</h3>
+          <p>
+            A platform tackling food waste at the source. It predicts how much food a kitchen
+            should actually cook based on historical demand, occupancy and preorders  then
+            lets customers preorder meals so kitchens cook to demand instead of guessing.
+            Designed for schools, hotels and food outlets.
+          </p>
+          <div class="project-tags">
+            <span>Demand Forecasting</span>
+            <span>Pre-ordering</span>
+            <span>Waste Reduction</span>
+            <span>Web Platform</span>
+          </div>
+          <a href="#contact" class="project-link">
+            Ask me about it
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 -->
+      <article class="project reveal">
+        <div class="project-media">
+          <!-- 🔁 REPLACE with a screenshot of ZimRentTrust -->
+          <img src="ZimRentTrust.jpg"
+               alt="ZimRentTrust project image placeholder" />
+          <span class="project-tag">PropTech</span>
+        </div>
+        <div class="project-body">
+          <h3>ZimRentTrust — Housing Agent Platform for Zimbabwe</h3>
+          <p>
+            A web platform for a Zimbabwean housing agent, built to make property listings,
+            enquiries and tenant–landlord interactions transparent and trustworthy. Addresses a
+            very local problem: unreliable rental information and friction between agents,
+            landlords and tenants.
+          </p>
+          <div class="project-tags">
+            <span>Web Development</span>
+            <span>Zimbabwe</span>
+            <span>Property</span>
+            <span>UX</span>
+          </div>
+          <a href="#contact" class="project-link">
+            Ask me about it
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- PROJECT 3 -->
+      <article class="project reveal">
+        <div class="project-media">
+          <!-- 🔁 REPLACE with a photo of your sludge/cement work -->
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23e6eef9'/%3E%3Ctext x='400' y='245' font-family='Arial' font-size='26' fill='%23789ec9' text-anchor='middle'%3ESLUDGE TO CEMENT %3C/text%3E%3Ctext x='400' y='285' font-family='Arial' font-size='16' fill='%23a3bcda' text-anchor='middle'%3Econtact me for more details %3C/text%3E%3C/svg%3E"
+               alt="Water treatment sludge to cement project image placeholder" />
+          <span class="project-tag">Materials</span>
+        </div>
+        <div class="project-body">
+          <h3>Water Treatment Sludge → Cement</h3>
+          <p>
+            A circular-economy materials project exploring how sludge from water treatment
+            plants can be processed and valorised into cement turning a disposal cost and
+            environmental liability into a usable construction input.
+          </p>
+          <div class="project-tags">
+            <span>Materials Engineering</span>
+            <span>Circular Economy</span>
+            <span>Water Treatment</span>
+            <span>Sustainability</span>
+          </div>
+          <a href="#contact" class="project-link">
+            Ask me about it
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- PROJECT 4 -->
+      <article class="project reveal">
+        <div class="project-media">
+          <!-- 🔁 REPLACE with a diagram/screenshot of your HVAC control model -->
+          <img src="predictive_hvac_control.jpg"
+               alt="Predictive HVAC project image placeholder" />
+          <span class="project-tag">Control Systems</span>
+        </div>
+        <div class="project-body">
+          <h3>Predictive HVAC for Institutional Boardrooms</h3>
+          <p>
+            A predictive HVAC control concept for institutional boardrooms that forecasts
+            occupancy and preconditions the space before people arrive. Combines
+            <strong>feedforward control</strong> (acting on predicted occupancy) with
+            <strong>feedback control</strong> (correcting against measured conditions) to cut
+            energy waste without sacrificing comfort.I also added predictive maintanance to the HVAC.
+          </p>
+          <div class="project-tags">
+            <span>Occupancy Prediction</span>
+            <span>Feedforward + Feedback</span>
+            <span>Energy Efficiency</span>
+            <span>Thermodynamics</span>
+          </div>
+          <a href="#contact" class="project-link">
+            Ask me about it
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="more note reveal">
+      <strong>…and a few more.</strong> These are just the highlights  there are other builds,
+      experiments and half finished ideas in the workshop. Happy to walk you through any of them and open to collaborations .Basa Kuwanda.
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EXPERIENCE ============================ -->
+<section class="pad tint-bg" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Before engineering</div>
+      <h2>Real-world business experience</h2>
+      <p>
+        I ran businesses across four very different industries before starting my engineering
+        degree. That experience is why I design for real constraints — budgets, timelines,
+        customers and imperfect information.
+      </p>
+    </div>
+
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        </div>
+        <h3>Agriculture</h3>
+        <p>Hands-on exposure to production cycles, inputs, yields and the risk that comes with them.</p>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        </div>
+        <h3>Printing</h3>
+        <p>Delivering to client specs, managing turnaround times and getting detail right the first time.</p>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Insurance</h3>
+        <p>Risk assessment, client trust and understanding how people evaluate uncertainty.</p>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </div>
+        <h3>Art</h3>
+        <p>Creative product development, branding and selling something that has to be genuinely good.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GLOBAL ============================ -->
+<section class="pad global" id="global">
+  <div class="wrap">
+    <div class="global-grid">
+
+      <div class="reveal">
+        <div class="eyebrow">Cross-cultural</div>
+        <div class="section-head" style="margin-bottom:0;">
+          <h2>Local roots, continental perspective</h2>
+          <p>
+            Zimbabwean by birth, and I've travelled and worked across Southern and East Africa.
+            Working across borders taught me that the same engineering problem can have very
+            different right answers depending on where you're standing.
+          </p>
+        </div>
+
+        <div class="xc-list">
+          <div class="xc-item">
+            <span class="tick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Comfortable communicating and collaborating across cultural and language boundaries.</span>
+          </div>
+          <div class="xc-item">
+            <span class="tick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Experience adapting solutions to local infrastructure, budget and market realities.</span>
+          </div>
+          <div class="xc-item">
+            <span class="tick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Pan-African outlook — I want to build things that work beyond one country's borders.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="country-grid">
+
+          <!-- Zimbabwe -->
+          <div class="country">
+            <div class="flag-svg">
+              <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="32" fill="#319208"/>
+                <rect y="4.57" width="48" height="4.57" fill="#ffd200"/>
+                <rect y="9.14" width="48" height="4.57" fill="#de2010"/>
+                <rect y="13.71" width="48" height="4.57" fill="#000"/>
+                <rect y="18.28" width="48" height="4.57" fill="#de2010"/>
+                <rect y="22.85" width="48" height="4.58" fill="#ffd200"/>
+                <rect y="27.43" width="48" height="4.57" fill="#319208"/>
+                <polygon points="0,0 16,16 0,32" fill="#fff"/>
+                <circle cx="6.5" cy="16" r="3" fill="#de2010"/>
+              </svg>
+            </div>
+            <b>Zimbabwe</b>
+            <span>Home</span>
+          </div>
+
+          <!-- South Africa -->
+          <div class="country">
+            <div class="flag-svg">
+              <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="16" fill="#de3831"/>
+                <rect y="16" width="48" height="16" fill="#002395"/>
+                <rect y="12" width="48" height="8" fill="#007749"/>
+                <polygon points="0,0 0,32 18,16" fill="#007749"/>
+                <polygon points="0,0 0,32 14,16" fill="#000"/>
+                <polygon points="0,0 0,32 14,16" fill="none" stroke="#ffb612" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <b>South Africa</b>
+            <span>Visited</span>
+          </div>
+
+          <!-- Botswana -->
+          <div class="country">
+            <div class="flag-svg">
+              <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="32" fill="#6da9d2"/>
+                <rect y="10" width="48" height="12" fill="#fff"/>
+                <rect y="13" width="48" height="6" fill="#000"/>
+              </svg>
+            </div>
+            <b>Botswana</b>
+            <span>Visited</span>
+          </div>
+
+          <!-- Ethiopia -->
+          <div class="country">
+            <div class="flag-svg">
+              <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="10.67" fill="#078930"/>
+                <rect y="10.67" width="48" height="10.67" fill="#fcdd09"/>
+                <rect y="21.34" width="48" height="10.66" fill="#da121a"/>
+                <circle cx="24" cy="16" r="6.5" fill="#0f47af"/>
+                <polygon points="24,10.5 25.6,14.5 29.7,14.5 26.4,17 27.7,21 24,18.5 20.3,21 21.6,17 18.3,14.5 22.4,14.5" fill="#fcdd09"/>
+              </svg>
+            </div>
+            <b>Ethiopia</b>
+            <span>Visited</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VISION ============================ -->
+<section class="pad" id="vision">
+  <div class="wrap">
+    <div class="vision-card reveal">
+      <div class="eyebrow">Where this is going</div>
+      <h2>My goal: become an entrepreneur solving real African problems with mechanical engineering.</h2>
+
+      <p>
+        Africa doesn't have a shortage of problems — it has a shortage of engineers willing to
+        stay close enough to those problems to solve them properly. I want to be one of the
+        engineers who does. My long-term goal is to build and run engineering-driven ventures
+        across the continent: companies that turn waste into materials, that cut energy waste in
+        buildings, that make food systems smarter, and that use machines and automation to
+        multiply what a small team can do.
+      </p>
+
+      <p>
+        Right now, that means building technical depth — mechanics, thermodynamics, fluids,
+        design, controls and code — while keeping one foot firmly in the real world of
+        customers, costs and operations.
+      </p>
+
+      <div class="vision-points">
+        <div class="vp">
+          <b>Now</b>
+          <p>Master the fundamentals, ship real projects, get plant-floor exposure with PLCs.</p>
+        </div>
+        <div class="vp">
+          <b>Next</b>
+          <p>Internships and design work where mechanical engineering meets energy and food systems.</p>
+        </div>
+        <div class="vp">
+          <b>Later</b>
+          <p>Found and scale engineering ventures that solve problems across Africa.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AUSTRALIAN CRAYFISH SECTION (Zimbabwean pride + premium) -->
-<section id="crayfish" class="py-24 px-6 bg-gradient-to-b from-black to-zinc-950">
-  <div class="max-w-6xl mx-auto text-center">
-    <div class="reveal">
-      <span class="text-amber-400/80 text-sm uppercase tracking-wider bg-white/5 px-4 py-1 rounded-full">exclusive import — Zimbabwe's finest</span>
-      <h2 class="text-4xl md:text-6xl font-bold mt-5 mb-4">Australian <span class="text-amber-400">Crayfish</span></h2>
-      <p class="text-gray-300 max-w-2xl mx-auto mb-8">Premium, wild-caught Australian crayfish — delivered fresh to your table in Zimbabwe. The ultimate seafood experience for special occasions.</p>
-    </div>
+<!-- ============================ CONTACT ============================ -->
+<section class="pad tint-bg" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
 
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="rounded-3xl overflow-hidden shadow-2xl reveal">
-        <img src="https://images.unsplash.com/photo-1551103782-3ab3a4f7a8f5?auto=format&fit=crop&w=1200&q=80" class="w-full h-96 object-cover" alt="Australian Crayfish">
-      </div>
-      <div class="text-left reveal space-y-5">
-        <div class="flex items-center gap-2">
-          <span class="text-2xl">🇿🇼</span>
-          <span class="text-sm text-amber-400 font-semibold">Sourced for Zimbabwean tables</span>
+      <div class="reveal">
+        <div class="eyebrow">Contact</div>
+        <div class="section-head" style="margin-bottom:0;">
+          <h2>Let's build something</h2>
+          <p>
+            Open to internships, junior design work, collaborations and any conversation about
+            engineering in Africa. The quickest way to reach me is email.
+          </p>
         </div>
-        <h3 class="text-3xl font-bold">Premium Quality, Sustainably Sourced</h3>
-        <p class="text-gray-300 leading-relaxed">We import directly from Australian fisheries. Our crayfish are known for their sweet, delicate meat and impressive size — perfect for fine dining, weddings, or a luxurious family meal.</p>
-        <ul class="space-y-2 text-gray-400">
-          <li class="flex items-center gap-2">✓ <span>Live delivery available in Gweru & Harare</span></li>
-          <li class="flex items-center gap-2">✓ <span>Frozen & vacuum-sealed for nationwide shipping</span></li>
-          <li class="flex items-center gap-2">✓ <span>Restaurant & bulk supply</span></li>
-          <li class="flex items-center gap-2">✓ <span>Contact for current availability & pricing</span></li>
-        </ul>
-        <div class="flex flex-wrap gap-4 pt-4">
-          <button onclick="orderCrayfish()" class="btn-primary px-6 py-3 rounded-full font-bold">Order via WhatsApp →</button>
-          <button onclick="sendBulkInquiry()" class="border border-amber-500/50 px-6 py-3 rounded-full font-medium hover:bg-amber-500/10 transition">Bulk Inquiry</button>
+
+        <div class="contact-list">
+
+          <a href="mailto:basatechzw@gmail.com" class="contact-item">
+            <div class="contact-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <b>Email</b>
+              <span>basatechzw@gmail.com</span>
+            </div>
+          </a>
+
+          <a href="tel:+263786050" class="contact-item">
+            <div class="contact-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <b>Phone</b>
+              <span>+263 786 050</span>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/brian-tinashe-baki" target="_blank" rel="noopener" class="contact-item">
+            <div class="contact-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <b>LinkedIn</b>
+              <span>Brian Tinashe Baki</span>
+            </div>
+          </a>
+
+          <a href="#" class="contact-item">
+            <div class="contact-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <b>Location</b>
+              <span>Zimbabwe · open to remote &amp; regional</span>
+            </div>
+          </a>
+
         </div>
-        <p class="text-xs text-gray-500 mt-4">📦 Minimum order: 2kg | Nationwide delivery across Zimbabwe</p>
       </div>
+
+      <div class="form-card reveal">
+        <h3>Send a message</h3>
+        <p class="fsub">Tell me what you're working on — I'll get back to you.</p>
+
+        <form action="mailto:basatechzw@gmail.com" method="post" enctype="text/plain">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Moyo" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Hi Brian, I'd like to talk about…" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+          <p class="form-note">
+            This is still  under construction contact me directly through my phone and Email.
+          </p>
+        </form>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- INSURANCE SHOWCASE (ZINARA & ZBC detailed with Zimbabwe context) -->
-<section class="py-24 px-6 relative">
-  <div class="max-w-5xl mx-auto text-center">
-    <div class="reveal">
-      <span class="text-blue-400 bg-blue-500/10 px-5 py-1 rounded-full text-xs font-semibold tracking-wide">compliance specialists — Zimbabwe</span>
-      <h2 class="text-4xl md:text-5xl font-bold mt-5 mb-4">ZINARA & ZBC Licence Experts</h2>
-      <p class="text-gray-400 max-w-2xl mx-auto mb-12">Save time and avoid penalties. We handle all documentation and follow-ups with local authorities.</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="glass-card p-8 rounded-2xl flex flex-col items-center text-center reveal">
-        <div class="w-20 h-20 rounded-full bg-red-500/10 flex items-center justify-center text-4xl mb-4">🚛</div>
-        <h3 class="text-2xl font-bold mb-2">ZINARA Licensing</h3>
-        <p class="text-gray-400">Vehicle registration, road permits, and annual licences for private & commercial fleets across Zimbabwe.</p>
-        <div class="mt-4 text-sm text-gray-500">📋 Hassle-free renewal</div>
-      </div>
-      <div class="glass-card p-8 rounded-2xl flex flex-col items-center text-center reveal">
-        <div class="w-20 h-20 rounded-full bg-red-500/10 flex items-center justify-center text-4xl mb-4">📺</div>
-        <h3 class="text-2xl font-bold mb-2">ZBC Licence</h3>
-        <p class="text-gray-400">TV and radio receiver licences — quick processing for households and businesses nationwide.</p>
-        <div class="mt-4 text-sm text-gray-500">⚡ Same-day service available</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE SECTION -->
-<section id="quote" class="py-24 px-6 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-r from-red-950/30 via-black to-red-950/20"></div>
-  <div class="max-w-4xl mx-auto text-center relative z-10 glass-modern p-10 md:p-14 rounded-3xl border border-white/20 shadow-2xl">
-    <div class="reveal">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-3">Get a Quote</h2>
-      <p class="text-gray-300 mb-8">Web app, insurance, or Australian crayfish — we'll respond within minutes.</p>
-      
-      <div class="flex flex-col items-center gap-6">
-        <div class="w-full max-w-md">
-          <select id="service" class="w-full bg-black/70 border border-gray-600 rounded-xl p-4 text-white focus:outline-none focus:border-red-500 transition">
-            <option value="Web App Development">💻 Web App / System Development</option>
-            <option value="Insurance (ZINARA/ZBC)">🛡️ Insurance: ZINARA / ZBC Licence</option>
-            <option value="Australian Crayfish">🦞 Australian Crayfish (Order)</option>
-            <option value="Printing Services">🖨️ Printing & Branding</option>
-            <option value="Art Studio Commission">🎨 Art Studio Portrait</option>
-          </select>
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="logo">
+          <div class="logo-mark">BTB</div>
+          <div class="logo-txt">
+            Brian Tinashe Baki
+            <small>Mechanical Engineering</small>
+          </div>
         </div>
-        
-        <button onclick="sendQuote()" class="btn-primary px-10 py-4 rounded-full text-lg font-bold flex items-center gap-3 shadow-2xl">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/>
-            <path d="M11.811 9.812c-.198-.099-1.172-.578-1.353-.644-.181-.066-.313-.099-.445.099-.133.197-.514.644-.63.776-.116.132-.232.149-.43.05-.198-.099-.836-.308-1.592-.983-.59-.525-.988-1.175-1.103-1.372-.116-.198-.012-.305.087-.403.089-.089.198-.232.297-.347.099-.116.132-.198.198-.33.066-.132.033-.248-.016-.347-.05-.099-.445-1.073-.61-1.47-.16-.387-.323-.334-.445-.34-.116-.007-.249-.007-.382-.007s-.347.05-.529.248c-.182.198-.695.678-.695 1.654 0 .976.71 1.919.81 2.052.099.132 1.394 2.132 3.38 2.99.472.204.84.326 1.128.417.474.149.905.128 1.246.078.38-.05 1.172-.479 1.337-.942.165-.463.165-.86.116-.942-.05-.083-.182-.132-.38-.231z"/>
-          </svg>
-          Send via WhatsApp
-        </button>
+        <p>
+          First-year mechanical engineering student, problem solver, and future
+          African entrepreneur. Building practical solutions for real problems.
+        </p>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- CONTACT SECTION: Baki & Benjamin + Socials -->
-<section class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12 reveal">
-      <span class="text-red-400 text-sm uppercase tracking-wide">Direct contacts — Zimbabwe</span>
-      <h2 class="text-4xl font-bold mt-2">Talk to Baki or Benjamin</h2>
-      <p class="text-gray-400">WhatsApp us for quick responses on quotes, orders & support</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-      <div class="contact-card rounded-2xl p-6 flex items-center gap-5 reveal hover:scale-[1.02] transition">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-2xl font-bold shadow-lg">BA</div>
-        <div class="flex-1">
-          <h3 class="text-xl font-bold">Baki</h3>
-          <p class="text-gray-300 text-sm">+263 78 605 0237</p>
-          <a href="https://wa.me/263786050237" target="_blank" class="inline-flex items-center gap-2 text-green-400 text-sm mt-2 hover:text-green-300">Chat on WhatsApp →</a>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
         </div>
-      </div>
-      <div class="contact-card rounded-2xl p-6 flex items-center gap-5 reveal hover:scale-[1.02] transition">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-2xl font-bold shadow-lg">BE</div>
-        <div class="flex-1">
-          <h3 class="text-xl font-bold">Benjamin</h3>
-          <p class="text-gray-300 text-sm">+263 78 263 7977</p>
-          <a href="https://wa.me/263782637977" target="_blank" class="inline-flex items-center gap-2 text-green-400 text-sm mt-2 hover:text-green-300">Chat on WhatsApp →</a>
+        <div class="foot-col">
+          <h4>More</h4>
+          <a href="#experience">Experience</a>
+          <a href="#global">Global</a>
+          <a href="#vision">Vision</a>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <a href="mailto:basatechzw@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/brian-tinashe-baki" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#contact">Contact form</a>
         </div>
       </div>
     </div>
 
-    <div class="mt-16 text-center">
-      <p class="text-gray-400 mb-5 text-sm uppercase tracking-wider">🇿🇼 Follow @barrkigroup</p>
-      <div class="flex justify-center gap-8 flex-wrap">
-        <a href="https://instagram.com/barrkigroup" target="_blank" class="flex items-center gap-2 text-gray-300 hover:text-pink-500 transition text-lg font-medium"><span class="text-2xl">📷</span> Instagram</a>
-        <a href="https://facebook.com/barrkigroup" target="_blank" class="flex items-center gap-2 text-gray-300 hover:text-blue-500 transition text-lg font-medium"><span class="text-2xl">📘</span> Facebook</a>
-        <a href="https://tiktok.com/@barrkigroup" target="_blank" class="flex items-center gap-2 text-gray-300 hover:text-white transition text-lg font-medium"><span class="text-2xl">🎵</span> TikTok</a>
-      </div>
-    </div>
-
-    <div class="mt-12 text-center text-gray-500 text-sm">
-      📍 Bahudur Centre, Gweru, Zimbabwe | Mon-Fri: 8am – 5pm | 🇿🇼 Serving the nation
-    </div>
-  </div>
-</section>
-
-<footer class="py-8 text-center border-t border-white/5 bg-black/40">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
-    <p>© 2026 Basatech Zimbabwe — Web Apps • Insurance • Australian Crayfish • Proudly Zimbabwean 🇿🇼</p>
-    <div class="flex gap-6">
-      <a href="https://instagram.com/barrkigroup" target="_blank" class="hover:text-white">Instagram</a>
-      <a href="https://facebook.com/barrkigroup" target="_blank" class="hover:text-white">Facebook</a>
-      <a href="https://tiktok.com/@barrkigroup" target="_blank" class="hover:text-white">TikTok</a>
+    <div class="foot-bottom">
+      <span>© <span id="year">2025</span> Brian Tinashe Baki. All rights reserved.</span>
+      <span>Designed &amp; built with by Brian Tinashe Baki with AI as a tool.</span>
     </div>
   </div>
 </footer>
 
+<!-- ============================ SCRIPTS ============================ -->
 <script>
-  function sendQuote() {
-    const serviceSelect = document.getElementById("service");
-    const selectedText = serviceSelect.options[serviceSelect.selectedIndex].text;
-    const message = `Hello Basatech, I'm interested in: ${selectedText}. Please share details & pricing.`;
-    window.open(`https://wa.me/263786050237?text=${encodeURIComponent(message)}`, '_blank');
-  }
+  /* ---------- Mobile menu ---------- */
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-  function orderCrayfish() {
-    const msg = `Hello! I'd like to order Australian Crayfish. Please let me know current availability and delivery options in Zimbabwe.`;
-    window.open(`https://wa.me/263786050237?text=${encodeURIComponent(msg)}`, '_blank');
-  }
-
-  function sendBulkInquiry() {
-    const msg = `Hi Benjamin, I'm interested in bulk order of Australian Crayfish for business/event in Zimbabwe. Please advise pricing & minimums.`;
-    window.open(`https://wa.me/263782637977?text=${encodeURIComponent(msg)}`, '_blank');
-  }
-
-  const revealElements = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-  
-  revealElements.forEach(el => observer.observe(el));
-
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      nav.classList.add('bg-black/80', 'backdrop-blur-xl', 'border-white/20');
-      nav.classList.remove('bg-black/40');
-    } else {
-      nav.classList.remove('bg-black/80', 'border-white/20');
-      nav.classList.add('bg-black/40');
-    }
+  burger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen);
   });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i % 4, 3) * 70}ms`;
+      io.observe(el);
+    });
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  /* ---------- Auto year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
