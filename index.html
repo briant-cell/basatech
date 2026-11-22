@@ -37,6 +37,7 @@
    2. BASE
    ============================================================ */
 *{margin:0;padding:0;box-sizing:border-box;}
+html, body { max-width:100%; overflow-x:hidden; }
 html{scroll-behavior:smooth;}
 body{
   font-family: var(--font-sf);
@@ -45,14 +46,23 @@ body{
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  overflow-x:hidden;
 }
-img{display:block;max-width:100%;}
+img{display:block;max-width:100%;height:auto;}
 a{color:inherit;text-decoration:none;}
 ul{list-style:none;}
 svg{display:block;}
+section, header, footer { max-width:100%; }
 
-.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:24px;}
+/* Mobile overflow safety net */
+*, *::before, *::after { min-width:0; }
+img, svg, video, canvas { max-width:100%; height:auto; }
+
+.wrap{
+  width:100%;
+  max-width:var(--max);
+  margin-inline:auto;
+  padding-inline:clamp(16px, 5vw, 24px);
+}
 section{scroll-margin-top:88px;}
 
 /* ============================================================
@@ -75,6 +85,12 @@ section{scroll-margin-top:88px;}
 .pad-sm{padding:72px 0;}
 .tint-bg{background:var(--tint-2);}
 
+@media(max-width:600px){
+  .pad{padding:64px 0;}
+  .pad-sm{padding:48px 0;}
+  .section-head{margin-bottom:32px;}
+}
+
 /* ============================================================
    4. HEADER / NAV
    ============================================================ */
@@ -95,11 +111,13 @@ header{
   color:#fff;display:grid;place-items:center;
   font-size:.82rem;font-weight:800;letter-spacing:.02em;
   box-shadow:0 6px 16px rgba(11,79,158,.32);
+  flex:0 0 auto;
 }
 .logo-txt{font-size:1rem;color:var(--navy);line-height:1.1;}
 .logo-txt small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);}
 
-.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links{display:none;align-items:center;gap:30px;}
+@media(min-width:1000px){.nav-links{display:flex;}}
 .nav-links a{
   font-size:.9rem;font-weight:600;color:var(--muted);
   position:relative;padding:6px 0;transition:color .22s;
@@ -155,7 +173,7 @@ header{
 
 .mobile-menu{
   display:none;flex-direction:column;gap:4px;
-  padding:10px 24px 24px;border-top:1px solid var(--line);background:#fff;
+  padding:10px clamp(16px,5vw,24px) 24px;border-top:1px solid var(--line);background:#fff;
 }
 .mobile-menu.open{display:flex;}
 .mobile-menu a{
@@ -174,7 +192,7 @@ header{
     radial-gradient(700px 420px at 6% 92%, rgba(21,101,192,.42), transparent 60%),
     linear-gradient(155deg, var(--navy) 0%, var(--blue) 58%, #10579f 100%);
   color:#fff;
-  padding:88px 0 96px;
+  padding:clamp(48px,10vw,88px) 0 clamp(56px,10vw,96px);
 }
 .hero::after{
   content:'';position:absolute;inset:0;pointer-events:none;
@@ -197,10 +215,12 @@ header{
   background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.26);
   padding:8px 16px;border-radius:999px;
   font-size:.78rem;font-weight:600;letter-spacing:.04em;margin-bottom:24px;
+  max-width:100%;
 }
 .dot-live{
   width:8px;height:8px;border-radius:50%;background:#5ee0a0;
   box-shadow:0 0 0 0 rgba(94,224,160,.7);animation:pulse 2.2s infinite;
+  flex:0 0 auto;
 }
 @keyframes pulse{
   0%{box-shadow:0 0 0 0 rgba(94,224,160,.65);}
@@ -208,8 +228,9 @@ header{
   100%{box-shadow:0 0 0 0 rgba(94,224,160,0);}
 }
 .hero h1{
-  font-size:clamp(2.2rem,5.4vw,3.6rem);
-  line-height:1.07;letter-spacing:-.03em;font-weight:800;margin-bottom:22px;
+  font-size:clamp(1.95rem,5.4vw,3.6rem);
+  line-height:1.1;letter-spacing:-.03em;font-weight:800;margin-bottom:22px;
+  word-wrap:break-word;
 }
 .hero h1 .accent{
   background:linear-gradient(100deg,#8fd0ff,#ffffff 60%);
@@ -234,8 +255,16 @@ header{
 .stat b{display:block;font-size:1.32rem;font-weight:800;letter-spacing:-.02em;line-height:1.15;}
 .stat span{font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.72);font-weight:600;}
 
+@media(max-width:480px){
+  .hero-actions .btn{width:100%;justify-content:center;}
+  .hero-stats{gap:10px;}
+  .stat{padding:10px 8px;}
+  .stat b{font-size:1.1rem;}
+  .stat span{font-size:.62rem;letter-spacing:.05em;}
+}
+
 /* Portrait */
-.portrait-wrap{position:relative;justify-self:center;width:100%;max-width:380px;}
+.portrait-wrap{position:relative;justify-self:center;width:100%;max-width:380px;margin-top:8px;}
 .portrait{
   position:relative;border-radius:26px;overflow:hidden;
   border:1px solid rgba(255,255,255,.30);
@@ -261,35 +290,66 @@ header{
   background:var(--tint);color:var(--blue);flex:0 0 auto;
 }
 .fc-icon svg{width:17px;height:17px;}
+
 @media(max-width:520px){
-  .fc-1{left:-6px;bottom:-16px;padding:10px 12px;font-size:.72rem;}
-  .fc-2{right:-6px;top:-16px;padding:10px 12px;font-size:.72rem;}
+  .portrait-wrap{max-width:300px;}
+  .portrait-ring{inset:-10px;border-radius:26px;}
+  .fc-1{
+    left:0;bottom:-14px;padding:9px 11px;font-size:.68rem;
+    max-width:calc(100% - 8px);
+  }
+  .fc-2{
+    right:0;top:-14px;padding:9px 11px;font-size:.68rem;
+    max-width:calc(100% - 8px);
+  }
+  .fc-icon{width:26px;height:26px;border-radius:7px;}
+  .fc-icon svg{width:14px;height:14px;}
+  .float-card small{font-size:.6rem;}
 }
 
 /* ============================================================
-   6. MARQUEE STRIP
+   6. MARQUEE STRIP  (FIXED — no more overlapping text)
    ============================================================ */
 .strip{
   background:var(--navy);color:#fff;padding:16px 0;overflow:hidden;
   border-top:1px solid rgba(255,255,255,.08);
+  max-width:100vw;
 }
 .strip-track{
-  display:flex;gap:44px;white-space:nowrap;width:max-content;
+  display:flex;
+  align-items:center;
+  gap:0;                       /* gap handled per-item, not on the track */
+  white-space:nowrap;
+  width:max-content;
   animation:scrollX 34s linear infinite;
 }
 .strip-track span{
-  font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(255,255,255,.62);display:flex;align-items:center;gap:44px;
+  display:inline-flex;
+  align-items:center;
+  gap:0;
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.62);
+  padding-right:44px;          /* space after each word */
+  flex:0 0 auto;               /* never squeeze the text */
+  white-space:nowrap;
 }
 .strip-track span::after{
   content:'';
   display:inline-block;
-  width:6px;height:6px;
+  width:6px;
+  height:6px;
+  margin-left:44px;            /* diamond sits in the gap */
   background:rgba(59,142,224,.9);
   transform:rotate(45deg);
   flex:0 0 auto;
 }
-@keyframes scrollX{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes scrollX{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
 
 /* ============================================================
    7. ABOUT
@@ -367,7 +427,7 @@ header{
 /* ============================================================
    9. PROJECTS
    ============================================================ */
-.project-grid{display:grid;grid-template-columns:1fr;gap:28px;}
+.project-grid{display:grid;grid-template-columns:1fr;gap:clamp(18px,4vw,28px);}
 @media(min-width:800px){.project-grid{grid-template-columns:repeat(2,1fr);}}
 
 .project{
@@ -421,6 +481,7 @@ header{
    ============================================================ */
 .exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
 @media(min-width:860px){.exp-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:400px){.exp-grid{grid-template-columns:1fr;}}
 .exp-card{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:28px 22px;text-align:center;box-shadow:var(--shadow-sm);
@@ -531,6 +592,12 @@ header{
 .contact-item b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;}
 .contact-item span{font-size:.94rem;color:var(--ink);font-weight:600;word-break:break-word;}
 
+@media(max-width:480px){
+  .contact-item{padding:14px 14px;gap:12px;}
+  .contact-item span{font-size:.86rem;}
+  .form-card{padding:20px;}
+}
+
 .form-card{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:clamp(26px,4vw,38px);box-shadow:var(--shadow);
@@ -566,7 +633,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
 .foot-brand .logo-txt{color:#fff;}
 .foot-brand .logo-txt small{color:rgba(255,255,255,.55);}
 .foot-brand p{font-size:.88rem;margin-top:14px;line-height:1.65;}
-.foot-links{display:flex;gap:56px;flex-wrap:wrap;}
+.foot-links{display:flex;gap:clamp(28px,6vw,56px);flex-wrap:wrap;}
 .foot-col h4{
   font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
   color:#fff;margin-bottom:14px;font-weight:800;
@@ -675,10 +742,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
       <div class="portrait-wrap">
         <div class="portrait-ring"></div>
         <div class="portrait">
-          <!-- 🔁 REPLACE THIS IMAGE with your own portrait (recommended 800x800px) -->
-          <img
-            src="Imageme.jpg"
-            alt="Portrait of Brian Tinashe Baki — replace with your own photo" />
+          <img src="Imageme.jpg" alt="Portrait of Brian Tinashe Baki" />
         </div>
 
         <div class="float-card fc-1">
@@ -813,7 +877,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
           </div>
           <div>
             <b>Ran businesses before engineering</b>
-            <span>Agriculture ·Large Format Printing · Insurance · Art </span>
+            <span>Agriculture · Large Format Printing · Insurance · Art</span>
           </div>
         </div>
 
@@ -823,7 +887,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
           </div>
           <div>
             <b>Currently studying</b>
-            <span>Multivariable calculus · Advanced C · PLCs ·Finite Element Analysis using ANSYS </span>
+            <span>Multivariable calculus · Advanced C · PLCs · Finite Element Analysis using ANSYS</span>
           </div>
         </div>
       </aside>
@@ -847,7 +911,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
 
     <div class="skill-grid">
 
-      <!-- Mechanical fundamentals -->
       <div class="skill-card reveal">
         <h3>
           <span class="sc-ico">
@@ -867,7 +930,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
         </div>
       </div>
 
-      <!-- Electrical -->
       <div class="skill-card reveal">
         <h3>
           <span class="sc-ico">
@@ -884,7 +946,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
         </div>
       </div>
 
-      <!-- Software -->
       <div class="skill-card reveal">
         <h3>
           <span class="sc-ico">
@@ -903,7 +964,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
 
     </div>
 
-    <!-- Currently learning -->
     <div class="skill-card reveal" style="margin-top:24px;">
       <h3>
         <span class="sc-ico">
@@ -911,7 +971,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
         </span>
         Currently Levelling Up
       </h3>
-      <p class="sc-sub">Deliberate practice in progress not finished, but moving fast.</p>
+      <p class="sc-sub">Deliberate practice in progress — not finished, but moving fast.</p>
       <div class="chips">
         <span class="chip learning">Multivariable Calculus</span>
         <span class="chip learning">C Programming — advanced</span>
@@ -929,26 +989,23 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
       <div class="eyebrow">Selected work</div>
       <h2>Projects I've built</h2>
       <p>
-        Each of these started with a problem I could see happening in the real world
+        Each of these started with a problem I could see happening in the real world —
         then turned into a system, a model or a prototype.
       </p>
     </div>
 
-    <div class="projectgrid">
+    <div class="project-grid">
 
-      <!-- PROJECT 1 -->
       <article class="project reveal">
         <div class="project-media">
-          <!-- 🔁 REPLACE with a screenshot/photo of PrePlate -->
-          <img src="Preplate.jpg"
-               alt="PrePlate project image placeholder" />
+          <img src="Preplate.jpg" alt="PrePlate project image placeholder" />
           <span class="project-tag">Food Systems</span>
         </div>
         <div class="project-body">
           <h3>PrePlate — Food Waste Prediction &amp; Meal Pre-ordering</h3>
           <p>
             A platform tackling food waste at the source. It predicts how much food a kitchen
-            should actually cook based on historical demand, occupancy and preorders  then
+            should actually cook based on historical demand, occupancy and preorders — then
             lets customers preorder meals so kitchens cook to demand instead of guessing.
             Designed for schools, hotels and food outlets.
           </p>
@@ -965,12 +1022,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
         </div>
       </article>
 
-      <!-- PROJECT 2 -->
       <article class="project reveal">
         <div class="project-media">
-          <!-- 🔁 REPLACE with a screenshot of ZimRentTrust -->
-          <img src="ZimRentTrust.jpg"
-               alt="ZimRentTrust project image placeholder" />
+          <img src="ZimRentTrust.jpg" alt="ZimRentTrust project image placeholder" />
           <span class="project-tag">PropTech</span>
         </div>
         <div class="project-body">
@@ -994,19 +1048,16 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
         </div>
       </article>
 
-      <!-- PROJECT 3 -->
       <article class="project reveal">
         <div class="project-media">
-          <!-- 🔁 REPLACE with a photo of your sludge/cement work -->
-          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23e6eef9'/%3E%3Ctext x='400' y='245' font-family='Arial' font-size='26' fill='%23789ec9' text-anchor='middle'%3ESLUDGE TO CEMENT %3C/text%3E%3Ctext x='400' y='285' font-family='Arial' font-size='16' fill='%23a3bcda' text-anchor='middle'%3Econtact me for more details %3C/text%3E%3C/svg%3E"
-               alt="Water treatment sludge to cement project image placeholder" />
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23e6eef9'/%3E%3Ctext x='400' y='245' font-family='Arial' font-size='26' fill='%23789ec9' text-anchor='middle'%3ESLUDGE TO CEMENT%3C/text%3E%3Ctext x='400' y='285' font-family='Arial' font-size='16' fill='%23a3bcda' text-anchor='middle'%3Econtact me for more details%3C/text%3E%3C/svg%3E" alt="Water treatment sludge to cement project image placeholder" />
           <span class="project-tag">Materials</span>
         </div>
         <div class="project-body">
           <h3>Water Treatment Sludge → Cement</h3>
           <p>
             A circular-economy materials project exploring how sludge from water treatment
-            plants can be processed and valorised into cement turning a disposal cost and
+            plants can be processed and valorised into cement — turning a disposal cost and
             environmental liability into a usable construction input.
           </p>
           <div class="project-tags">
@@ -1022,12 +1073,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
         </div>
       </article>
 
-      <!-- PROJECT 4 -->
       <article class="project reveal">
         <div class="project-media">
-          <!-- 🔁 REPLACE with a diagram/screenshot of your HVAC control model -->
-          <img src="predictive_hvac_control.jpg"
-               alt="Predictive HVAC project image placeholder" />
+          <img src="predictive_hvac_control.jpg" alt="Predictive HVAC project image placeholder" />
           <span class="project-tag">Control Systems</span>
         </div>
         <div class="project-body">
@@ -1037,7 +1085,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
             occupancy and preconditions the space before people arrive. Combines
             <strong>feedforward control</strong> (acting on predicted occupancy) with
             <strong>feedback control</strong> (correcting against measured conditions) to cut
-            energy waste without sacrificing comfort.I also added predictive maintanance to the HVAC.
+            energy waste without sacrificing comfort. I also added predictive maintenance to the HVAC.
           </p>
           <div class="project-tags">
             <span>Occupancy Prediction</span>
@@ -1054,9 +1102,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
 
     </div>
 
-    <div class="more note reveal">
-      <strong>…and a few more.</strong> These are just the highlights  there are other builds,
-      experiments and half finished ideas in the workshop. Happy to walk you through any of them and open to collaborations .Basa Kuwanda.
+    <div class="more-note reveal">
+      <strong>…and a few more.</strong> These are just the highlights — there are other builds,
+      experiments and half-finished ideas in the workshop. Happy to walk you through any of them and open to collaborations. Basa Kuwanda.
     </div>
   </div>
 </section>
@@ -1151,7 +1199,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
       <div class="reveal">
         <div class="country-grid">
 
-          <!-- Zimbabwe -->
           <div class="country">
             <div class="flag-svg">
               <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
@@ -1170,7 +1217,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
             <span>Home</span>
           </div>
 
-          <!-- South Africa -->
           <div class="country">
             <div class="flag-svg">
               <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
@@ -1186,7 +1232,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
             <span>Visited</span>
           </div>
 
-          <!-- Botswana -->
           <div class="country">
             <div class="flag-svg">
               <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
@@ -1199,7 +1244,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
             <span>Visited</span>
           </div>
 
-          <!-- Ethiopia -->
           <div class="country">
             <div class="flag-svg">
               <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
@@ -1343,7 +1387,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
 
           <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
           <p class="form-note">
-            This is still  under construction contact me directly through my phone and Email.
+            This form is still under construction — contact me directly through my phone and email.
           </p>
         </form>
       </div>
@@ -1394,14 +1438,13 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
 
     <div class="foot-bottom">
       <span>© <span id="year">2025</span> Brian Tinashe Baki. All rights reserved.</span>
-      <span>Designed &amp; built with by Brian Tinashe Baki with AI as a tool.</span>
+      <span>Designed &amp; built by Brian Tinashe Baki with AI as a tool.</span>
     </div>
   </div>
 </footer>
 
 <!-- ============================ SCRIPTS ============================ -->
 <script>
-  /* ---------- Mobile menu ---------- */
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -1419,7 +1462,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
     });
   });
 
-  /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window) {
@@ -1440,7 +1482,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.72);padding:56px 0 32px;}
     revealEls.forEach(el => el.classList.add('in'));
   }
 
-  /* ---------- Auto year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
